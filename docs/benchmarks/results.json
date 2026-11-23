@@ -1,0 +1,254 @@
+{
+  "generated_at": "2026-11-23 02:54:46",
+  "parameters": {
+    "sizes": [
+      10,
+      50,
+      100,
+      500,
+      1000,
+      5000
+    ],
+    "repeats": 5,
+    "seed": 42,
+    "dp_capacity_cap_kg": 600,
+    "capacity_rule": "25% of total parcel weight, capped at 600 kg",
+    "locations_rule": "min(max(8, n/10), 150)"
+  },
+  "environment": {
+    "python": "3.13.18",
+    "platform": "Linux-6.18.44-fc-v726-x86_64-with-glibc2.39",
+    "processor": "x86_64"
+  },
+  "theory": {
+    "sorting": "Merge Sort: O(n log n)",
+    "knapsack": "0/1 Knapsack DP: O(n * W)",
+    "dijkstra": "Dijkstra (binary heap): O((V + E) log V)",
+    "routing": "Nearest Neighbour: O(k * (V + E) log V) for k stops"
+  },
+  "rows": [
+    {
+      "n": 10,
+      "locations": 8,
+      "roads": 13,
+      "capacity": 27,
+      "selected": 5,
+      "stops": 4,
+      "dp_cells": 280,
+      "sorting": {
+        "median_ms": 0.0104,
+        "min_ms": 0.0094,
+        "mean_ms": 0.0106,
+        "repeats": 5,
+        "peak_kb": 1.1
+      },
+      "knapsack": {
+        "median_ms": 0.0155,
+        "min_ms": 0.014,
+        "mean_ms": 0.0172,
+        "repeats": 5,
+        "peak_kb": 2.7
+      },
+      "dijkstra": {
+        "median_ms": 0.0108,
+        "min_ms": 0.0085,
+        "mean_ms": 0.0169,
+        "repeats": 5,
+        "peak_kb": 1.7
+      },
+      "routing": {
+        "median_ms": 0.0615,
+        "min_ms": 0.0563,
+        "mean_ms": 0.0768,
+        "repeats": 5,
+        "peak_kb": 3.4
+      }
+    },
+    {
+      "n": 50,
+      "locations": 8,
+      "roads": 12,
+      "capacity": 178,
+      "selected": 19,
+      "stops": 7,
+      "dp_cells": 8950,
+      "sorting": {
+        "median_ms": 0.068,
+        "min_ms": 0.0676,
+        "mean_ms": 0.0689,
+        "repeats": 5,
+        "peak_kb": 2.4
+      },
+      "knapsack": {
+        "median_ms": 0.4163,
+        "min_ms": 0.4102,
+        "mean_ms": 0.4222,
+        "repeats": 5,
+        "peak_kb": 19.7
+      },
+      "dijkstra": {
+        "median_ms": 0.0124,
+        "min_ms": 0.01,
+        "mean_ms": 0.0183,
+        "repeats": 5,
+        "peak_kb": 1.3
+      },
+      "routing": {
+        "median_ms": 0.0872,
+        "min_ms": 0.0842,
+        "mean_ms": 0.0942,
+        "repeats": 5,
+        "peak_kb": 4.2
+      }
+    },
+    {
+      "n": 100,
+      "locations": 10,
+      "roads": 14,
+      "capacity": 368,
+      "selected": 42,
+      "stops": 9,
+      "dp_cells": 36900,
+      "sorting": {
+        "median_ms": 0.1749,
+        "min_ms": 0.1737,
+        "mean_ms": 0.1804,
+        "repeats": 5,
+        "peak_kb": 3.6
+      },
+      "knapsack": {
+        "median_ms": 2.0311,
+        "min_ms": 1.9615,
+        "mean_ms": 2.0563,
+        "repeats": 5,
+        "peak_kb": 57.8
+      },
+      "dijkstra": {
+        "median_ms": 0.0121,
+        "min_ms": 0.0114,
+        "mean_ms": 0.019,
+        "repeats": 5,
+        "peak_kb": 1.3
+      },
+      "routing": {
+        "median_ms": 0.1541,
+        "min_ms": 0.1181,
+        "mean_ms": 0.1458,
+        "repeats": 5,
+        "peak_kb": 4.4
+      }
+    },
+    {
+      "n": 500,
+      "locations": 50,
+      "roads": 77,
+      "capacity": 600,
+      "selected": 104,
+      "stops": 43,
+      "dp_cells": 300500,
+      "sorting": {
+        "median_ms": 1.1315,
+        "min_ms": 1.1108,
+        "mean_ms": 1.1335,
+        "repeats": 5,
+        "peak_kb": 13.4
+      },
+      "knapsack": {
+        "median_ms": 17.3871,
+        "min_ms": 16.7549,
+        "mean_ms": 17.2674,
+        "repeats": 5,
+        "peak_kb": 351.1
+      },
+      "dijkstra": {
+        "median_ms": 0.0808,
+        "min_ms": 0.0768,
+        "mean_ms": 0.099,
+        "repeats": 5,
+        "peak_kb": 6.2
+      },
+      "routing": {
+        "median_ms": 3.7758,
+        "min_ms": 3.5775,
+        "mean_ms": 3.8284,
+        "repeats": 5,
+        "peak_kb": 20.5
+      }
+    },
+    {
+      "n": 1000,
+      "locations": 100,
+      "roads": 163,
+      "capacity": 600,
+      "selected": 146,
+      "stops": 79,
+      "dp_cells": 601000,
+      "sorting": {
+        "median_ms": 2.3935,
+        "min_ms": 2.3278,
+        "mean_ms": 2.3778,
+        "repeats": 3,
+        "peak_kb": 25.5
+      },
+      "knapsack": {
+        "median_ms": 31.7173,
+        "min_ms": 31.6658,
+        "mean_ms": 34.0914,
+        "repeats": 3,
+        "peak_kb": 679.0
+      },
+      "dijkstra": {
+        "median_ms": 0.1842,
+        "min_ms": 0.1822,
+        "mean_ms": 0.2169,
+        "repeats": 3,
+        "peak_kb": 16.8
+      },
+      "routing": {
+        "median_ms": 14.4797,
+        "min_ms": 14.2835,
+        "mean_ms": 14.5881,
+        "repeats": 3,
+        "peak_kb": 50.9
+      }
+    },
+    {
+      "n": 5000,
+      "locations": 150,
+      "roads": 240,
+      "capacity": 600,
+      "selected": 281,
+      "stops": 120,
+      "dp_cells": 3005000,
+      "sorting": {
+        "median_ms": 15.6397,
+        "min_ms": 15.3806,
+        "mean_ms": 15.9967,
+        "repeats": 3,
+        "peak_kb": 122.2
+      },
+      "knapsack": {
+        "median_ms": 189.5709,
+        "min_ms": 160.8052,
+        "mean_ms": 193.4128,
+        "repeats": 3,
+        "peak_kb": 3288.1
+      },
+      "dijkstra": {
+        "median_ms": 0.3157,
+        "min_ms": 0.2696,
+        "mean_ms": 0.3181,
+        "repeats": 3,
+        "peak_kb": 16.8
+      },
+      "routing": {
+        "median_ms": 36.6915,
+        "min_ms": 35.8654,
+        "mean_ms": 36.4952,
+        "repeats": 3,
+        "peak_kb": 63.8
+      }
+    }
+  ],
+  "note": "All times are measured on this machine; theoretical complexities are given separately and are not measurements."
+}

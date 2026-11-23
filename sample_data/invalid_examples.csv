@@ -1,0 +1,6 @@
+id,destination,weight,priority,deadline,value,status
+BAD-1,Atlantis,5,3,2026-12-02T10:00,100,pending
+BAD-2,Old Gurgaon,-4,3,2026-12-02T10:00,100,pending
+BAD-3,Old Gurgaon,5,9,2026-12-02T10:00,100,pending
+BAD-4,Old Gurgaon,5,3,not-a-date,100,pending
+BAD-5,Old Gurgaon,5,3,2026-12-02T10:00,,pending

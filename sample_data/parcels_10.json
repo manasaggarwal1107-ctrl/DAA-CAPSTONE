@@ -1,0 +1,92 @@
+[
+  {
+    "id": "PKG-0001",
+    "destination": "Sector 56",
+    "weight": 11,
+    "priority": 3,
+    "deadline": "2026-12-04T04:00",
+    "value": 180,
+    "status": "pending"
+  },
+  {
+    "id": "PKG-0002",
+    "destination": "Cyber Hub",
+    "weight": 29,
+    "priority": 3,
+    "deadline": "2026-12-03T16:00",
+    "value": 780,
+    "status": "pending"
+  },
+  {
+    "id": "PKG-0003",
+    "destination": "Palam Vihar",
+    "weight": 27,
+    "priority": 4,
+    "deadline": "2026-12-04T01:00",
+    "value": 800,
+    "status": "pending"
+  },
+  {
+    "id": "PKG-0004",
+    "destination": "Old Gurgaon",
+    "weight": 8,
+    "priority": 1,
+    "deadline": "2026-12-01T21:00",
+    "value": 190,
+    "status": "pending"
+  },
+  {
+    "id": "PKG-0005",
+    "destination": "Udyog Vihar",
+    "weight": 27,
+    "priority": 1,
+    "deadline": "2026-12-01T12:00",
+    "value": 670,
+    "status": "pending"
+  },
+  {
+    "id": "PKG-0006",
+    "destination": "Badshahpur",
+    "weight": 11,
+    "priority": 2,
+    "deadline": "2026-12-02T19:00",
+    "value": 490,
+    "status": "pending"
+  },
+  {
+    "id": "PKG-0007",
+    "destination": "MG Road",
+    "weight": 26,
+    "priority": 2,
+    "deadline": "2026-12-04T04:00",
+    "value": 140,
+    "status": "pending"
+  },
+  {
+    "id": "PKG-0008",
+    "destination": "Manesar",
+    "weight": 11,
+    "priority": 1,
+    "deadline": "2026-12-04T07:00",
+    "value": 420,
+    "status": "pending"
+  },
+  {
+    "id": "PKG-0009",
+    "destination": "Udyog Vihar",
+    "weight": 15,
+    "priority": 1,
+    "deadline": "2026-12-03T02:00",
+    "value": 80,
+    "status": "pending"
+  },
+  {
+    "id": "PKG-0010",
+    "destination": "Manesar",
+    "weight": 12,
+    "priority": 2,
+    "deadline": "2026-12-03T17:00",
+    "value": 160,
+    "status": "pending"
+  }
+]
