@@ -1,0 +1,17 @@
+flowchart TD
+  classDef alg fill:#FBE9EA,stroke:#B03040,color:#4F1119
+  classDef step fill:#FFF4DE,stroke:#B07A10,color:#4A3305
+  S(["run_pipeline(parcels, graph_data, settings)"]) --> V["1. Validate<br/>depot exists; keep status = pending"]:::step
+  V --> G["2. build_graph() from stored locations and roads"]:::step
+  G --> RE["3. Reachability: one Dijkstra run from depot<br/>classify parcels as deliverable or undeliverable"]:::alg
+  RE --> SO["4. Merge Sort of ALL pending parcels<br/>key = (-priority, deadline, id)"]:::alg
+  SO --> POOL["pool = sorted parcels that are deliverable"]:::step
+  POOL --> KN["5. 0/1 Knapsack on pool<br/>weight = kg, value = value x priority"]:::alg
+  KN --> DEST["6. Unique destinations of selected parcels<br/>(depot excluded)"]:::step
+  DEST --> NN["7. Nearest Neighbour tour<br/>k + 1 Dijkstra runs"]:::alg
+  NN --> CH{"Any stop unreachable<br/>from the previous stop?"}
+  CH -- "yes (one-way roads)" --> RP["move those parcels to undeliverable<br/>remove them from pool; replans += 1"]:::step
+  RP --> KN
+  CH -- "no" --> ETA["8. ETA model:<br/>dispatch + distance / speed + stop minutes"]:::step
+  ETA --> RES["9. Assemble result, status, warnings, timings_ms"]:::step
+  RES --> SAVE["10. API layer stores last_result<br/>and returns JSON"]:::step

@@ -1,0 +1,21 @@
+flowchart TB
+  classDef app fill:#FFF4DE,stroke:#B07A10,color:#4A3305
+  classDef db fill:#EEE9F8,stroke:#5B3FA0,color:#271A4B
+  classDef cfg fill:#EAF6EC,stroke:#2E7D3E,color:#14391C
+  ENV["Environment variable DATABASE_URL<br/>(read in config.py; value is a secret and is not documented)"]:::cfg
+  subgraph APP["Application process"]
+    CA["create_app()<br/>passes DATABASE_URL to Store<br/>only when no data_dir is given"]:::app
+    STORE["Store<br/>RLock + in-memory _state"]:::app
+    WR["_database_write decorator<br/>lock, open connection,<br/>SELECT ... FOR UPDATE"]:::app
+    RD["state property<br/>SELECT state (read)"]:::app
+  end
+  subgraph NEON["Neon PostgreSQL (database server)"]
+    T[("public.courier_app_state<br/>singleton BOOLEAN PK<br/>state JSONB<br/>version BIGINT<br/>updated_at TIMESTAMPTZ")]:::db
+  end
+  ENV --> CA
+  CA --> STORE
+  STORE --> WR
+  STORE --> RD
+  WR -- "psycopg.connect(...)<br/>one transaction per mutation" --> T
+  RD -- "psycopg.connect(...)" --> T
+  STORE -- "load(): CREATE TABLE IF NOT EXISTS,<br/>INSERT ... ON CONFLICT DO NOTHING" --> T

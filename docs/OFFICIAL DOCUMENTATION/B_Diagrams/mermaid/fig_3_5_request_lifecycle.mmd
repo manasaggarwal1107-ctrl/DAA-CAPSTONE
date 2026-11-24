@@ -1,0 +1,24 @@
+sequenceDiagram
+  autonumber
+  participant B as Browser (api.ts)
+  participant M as Starlette router + GZip
+  participant H as optimise_endpoint
+  participant S as Store
+  participant P as run_pipeline (thread pool)
+  participant E as Error handlers
+  B->>M: POST /api/optimise {capacity, depot}
+  M->>H: dispatch to route
+  H->>H: body parsed and OptimiseRequest validated
+  alt invalid field value (e.g. capacity < 0)
+    H-->>E: ValidationError
+    E-->>B: {"error": {code, message, details}} 422
+  else valid request
+    H->>S: update_settings(capacity / depot) [write]
+    H->>P: run_in_threadpool(optimise)
+    P->>S: parcels(), graph_data(), settings() [reads]
+    P->>P: validate, reachability, sort, knapsack, route, ETA
+    P->>S: set_result("last_result") [write]
+    P-->>H: result dict
+    H-->>B: 200 JSON result
+  end
+  Note over M,E: AlgorithmError subclasses map to 404 / 413 / 422.<br/>Any other exception, including malformed JSON on this route,<br/>maps to 500 internal_error (see finding F-04)

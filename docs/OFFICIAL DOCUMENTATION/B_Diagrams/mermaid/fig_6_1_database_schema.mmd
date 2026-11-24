@@ -1,0 +1,7 @@
+erDiagram
+  COURIER_APP_STATE {
+    boolean singleton PK "DEFAULT TRUE, CHECK (singleton)"
+    jsonb state "NOT NULL - whole application document"
+    bigint version "NOT NULL DEFAULT 1"
+    timestamptz updated_at "NOT NULL DEFAULT NOW()"
+  }

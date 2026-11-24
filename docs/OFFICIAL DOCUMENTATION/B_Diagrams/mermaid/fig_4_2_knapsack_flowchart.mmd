@@ -1,0 +1,25 @@
+flowchart TD
+  S(["Start: knapsack_01(weights, values, W)"]) --> V{"Inputs valid?<br/>equal lengths, W >= 0,<br/>no negatives"}
+  V -- "no" --> X1["raise AlgorithmError"]
+  V -- "yes" --> L{"n * (W + 1) <= MAX_DP_CELLS<br/>(60,000,000) ?"}
+  L -- "no" --> X2["raise ResourceLimitError"]
+  L -- "yes" --> I["dp = [0] * (W + 1)<br/>keep[i] = bytearray(W + 1) for each item"]
+  I --> OL{"more items?<br/>i = 0 .. n-1"}
+  OL -- "yes" --> IW["w = W"]
+  IW --> IL{"w >= weights[i] ?"}
+  IL -- "yes" --> CAND["candidate = dp[w - weights[i]] + values[i]"]
+  CAND --> IMP{"candidate > dp[w] ?"}
+  IMP -- "yes" --> UPD["dp[w] = candidate; keep[i][w] = 1"]
+  IMP -- "no" --> DEC["w = w - 1"]
+  UPD --> DEC
+  DEC --> IL
+  IL -- "no" --> OL
+  OL -- "no" --> RC["w = W; selected = [ ]"]
+  RC --> RL{"i from n-1 down to 0"}
+  RL -- "keep[i][w] = 1" --> TK["selected.append(i); w = w - weights[i]"]
+  TK --> RL
+  RL -- "keep[i][w] = 0" --> RL
+  RL -- "done" --> RT["reverse(selected)<br/>return best_value = dp[W], selected, total_weight"]
+  X1 --> E(["End"])
+  X2 --> E
+  RT --> E

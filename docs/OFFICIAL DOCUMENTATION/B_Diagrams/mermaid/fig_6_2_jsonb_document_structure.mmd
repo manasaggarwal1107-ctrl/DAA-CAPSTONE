@@ -1,0 +1,44 @@
+classDiagram
+  class state_JSONB {
+    parcels : array
+    graph : object
+    settings : object
+    last_result : object or null
+    last_benchmark : object or null
+  }
+  class parcel {
+    id : string
+    destination : string
+    weight : int kg
+    priority : int 1..5
+    deadline : string YYYY-MM-DDTHH:MM
+    value : int
+    status : pending / delivered / cancelled
+  }
+  class graph {
+    locations : array of Location
+    roads : array of Road
+  }
+  class Location {
+    name : string
+    x : number 0..100
+    y : number 0..100
+  }
+  class Road {
+    a : string
+    b : string
+    weight : number km
+    bidirectional : boolean
+  }
+  class settings {
+    capacity : int kg
+    depot : string
+    dispatch_time : string
+    speed_kmph : number
+    service_minutes : int
+  }
+  state_JSONB *-- parcel : parcels[ ]
+  state_JSONB *-- graph
+  state_JSONB *-- settings
+  graph *-- Location : locations[ ]
+  graph *-- Road : roads[ ]

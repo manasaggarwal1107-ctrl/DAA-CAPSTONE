@@ -1,0 +1,22 @@
+flowchart TD
+  S(["Start: dijkstra(graph, source, target=None)"]) --> V{"source (and target)<br/>in graph?"}
+  V -- "no" --> X["raise UnknownNodeError"]
+  V -- "yes" --> I["dist = {source: 0}; prev = {source: None}<br/>done = { }; heap.push(0, source)"]
+  I --> H{"heap not empty ?"}
+  H -- "no" --> RT["return DijkstraResult(dist, prev)"]
+  H -- "yes" --> P["(d, u) = heap.pop()"]
+  P --> ST{"u in done ?<br/>(stale entry)"}
+  ST -- "yes" --> H
+  ST -- "no" --> D["done.add(u)"]
+  D --> TG{"u == target ?"}
+  TG -- "yes" --> RT
+  TG -- "no" --> N{"next edge (u, v, w) ?"}
+  N -- "none left" --> H
+  N -- "edge" --> DN{"v in done ?"}
+  DN -- "yes" --> N
+  DN -- "no" --> RX{"d + w < dist.get(v, infinity) ?"}
+  RX -- "yes" --> UP["dist[v] = d + w; prev[v] = u<br/>heap.push(d + w, v)"]
+  RX -- "no" --> N
+  UP --> N
+  X --> E(["End"])
+  RT --> E

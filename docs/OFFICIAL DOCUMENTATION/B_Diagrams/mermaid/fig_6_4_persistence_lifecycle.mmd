@@ -1,0 +1,13 @@
+stateDiagram-v2
+  [*] --> ConfigCheck: process start, create_app()
+  ConfigCheck --> DatabaseMode: DATABASE_URL set and no data_dir
+  ConfigCheck --> FileMode: otherwise
+  DatabaseMode --> TableEnsured: CREATE TABLE IF NOT EXISTS
+  TableEnsured --> RowSeeded: INSERT default state ON CONFLICT DO NOTHING
+  RowSeeded --> Serving: state loaded
+  FileMode --> Serving: read state.json, or seed defaults if missing or corrupt
+  Serving --> Writing: mutation requested
+  Writing --> Serving: commit (version + 1) / atomic file replace
+  Writing --> Serving: exception, rollback (database mode)
+  Serving --> Reset: POST /api/reset
+  Reset --> Serving: state replaced by seeded sample data

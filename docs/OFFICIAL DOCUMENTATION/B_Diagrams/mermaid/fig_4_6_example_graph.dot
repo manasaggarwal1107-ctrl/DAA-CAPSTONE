@@ -1,0 +1,7 @@
+graph G {
+  layout=neato; overlap=false; splines=true; node [shape=circle, style=filled, fillcolor="#E8F1FB", color="#2B5C9E", fontname="Helvetica", fontsize=14, width=0.5];
+  edge [fontname="Helvetica", fontsize=12, color="#44546A"];
+  A [pos="0,2!"]; B [pos="2,0!"]; C [pos="2,4!"]; D [pos="5,2!"]; E [pos="7.5,0.5!"]; F [pos="9,3.5!"];
+  A -- B [label="4"]; A -- C [label="2"]; B -- C [label="5"]; B -- D [label="10"]; C -- D [label="3"];
+  D -- E [label="4"]; D -- F [label="11"]; E -- F [label="3"];
+}

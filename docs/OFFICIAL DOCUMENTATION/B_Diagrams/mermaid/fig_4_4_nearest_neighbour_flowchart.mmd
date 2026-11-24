@@ -1,0 +1,18 @@
+flowchart TD
+  S(["Start: nearest_neighbour_route(graph, depot, stops)"]) --> V{"depot in graph ?"}
+  V -- "no" --> X["raise UnknownNodeError"]
+  V -- "yes" --> I["remaining = set(stops) minus depot<br/>stops not in graph go to unreachable<br/>current = depot"]
+  I --> W{"remaining not empty ?"}
+  W -- "yes" --> DJ["sp = dijkstra(graph, current)<br/>dijkstra_runs += 1"]
+  DJ --> SC["linear scan over remaining:<br/>best = minimum (distance, name)<br/>among reachable stops"]
+  SC --> B{"best found ?"}
+  B -- "no" --> UN["add remaining to unreachable<br/>stop loop"]
+  B -- "yes" --> LG["append Leg(current -> next, path)<br/>remove next from remaining<br/>current = next"]
+  LG --> W
+  W -- "no" --> RT{"return_to_depot and<br/>at least one leg ?"}
+  UN --> RT
+  RT -- "yes" --> RD["sp = dijkstra(graph, current, target=depot)<br/>if path exists: set return_leg"]
+  RT -- "no" --> OUT["return RouteResult"]
+  RD --> OUT
+  X --> E(["End"])
+  OUT --> E

@@ -1,0 +1,191 @@
+{
+  "locations": [
+    {
+      "name": "Depot",
+      "x": 50,
+      "y": 52
+    },
+    {
+      "name": "Sohna Road",
+      "x": 52,
+      "y": 74
+    },
+    {
+      "name": "Sector 56",
+      "x": 70,
+      "y": 62
+    },
+    {
+      "name": "Golf Course Road",
+      "x": 80,
+      "y": 40
+    },
+    {
+      "name": "Cyber Hub",
+      "x": 62,
+      "y": 30
+    },
+    {
+      "name": "Udyog Vihar",
+      "x": 40,
+      "y": 24
+    },
+    {
+      "name": "MG Road",
+      "x": 74,
+      "y": 18
+    },
+    {
+      "name": "DLF Phase 3",
+      "x": 52,
+      "y": 8
+    },
+    {
+      "name": "Old Gurgaon",
+      "x": 24,
+      "y": 34
+    },
+    {
+      "name": "Palam Vihar",
+      "x": 14,
+      "y": 58
+    },
+    {
+      "name": "Sushant Lok",
+      "x": 30,
+      "y": 72
+    },
+    {
+      "name": "Badshahpur",
+      "x": 34,
+      "y": 90
+    },
+    {
+      "name": "Manesar",
+      "x": 14,
+      "y": 86
+    }
+  ],
+  "roads": [
+    {
+      "a": "Depot",
+      "b": "Sohna Road",
+      "weight": 4.2,
+      "bidirectional": true
+    },
+    {
+      "a": "Depot",
+      "b": "Sector 56",
+      "weight": 5.1,
+      "bidirectional": true
+    },
+    {
+      "a": "Depot",
+      "b": "Cyber Hub",
+      "weight": 4.6,
+      "bidirectional": true
+    },
+    {
+      "a": "Depot",
+      "b": "Old Gurgaon",
+      "weight": 6.3,
+      "bidirectional": true
+    },
+    {
+      "a": "Depot",
+      "b": "Sushant Lok",
+      "weight": 5.4,
+      "bidirectional": true
+    },
+    {
+      "a": "Sohna Road",
+      "b": "Sector 56",
+      "weight": 4.9,
+      "bidirectional": true
+    },
+    {
+      "a": "Sohna Road",
+      "b": "Badshahpur",
+      "weight": 5.2,
+      "bidirectional": true
+    },
+    {
+      "a": "Sector 56",
+      "b": "Golf Course Road",
+      "weight": 3.8,
+      "bidirectional": true
+    },
+    {
+      "a": "Golf Course Road",
+      "b": "Cyber Hub",
+      "weight": 4.4,
+      "bidirectional": true
+    },
+    {
+      "a": "Golf Course Road",
+      "b": "MG Road",
+      "weight": 5.6,
+      "bidirectional": true
+    },
+    {
+      "a": "Cyber Hub",
+      "b": "Udyog Vihar",
+      "weight": 4.7,
+      "bidirectional": true
+    },
+    {
+      "a": "Cyber Hub",
+      "b": "MG Road",
+      "weight": 3.6,
+      "bidirectional": true
+    },
+    {
+      "a": "MG Road",
+      "b": "DLF Phase 3",
+      "weight": 4.8,
+      "bidirectional": true
+    },
+    {
+      "a": "Udyog Vihar",
+      "b": "DLF Phase 3",
+      "weight": 4.3,
+      "bidirectional": true
+    },
+    {
+      "a": "Udyog Vihar",
+      "b": "Old Gurgaon",
+      "weight": 4.1,
+      "bidirectional": true
+    },
+    {
+      "a": "Old Gurgaon",
+      "b": "Palam Vihar",
+      "weight": 5.3,
+      "bidirectional": true
+    },
+    {
+      "a": "Palam Vihar",
+      "b": "Sushant Lok",
+      "weight": 4.5,
+      "bidirectional": true
+    },
+    {
+      "a": "Sushant Lok",
+      "b": "Badshahpur",
+      "weight": 4.4,
+      "bidirectional": true
+    },
+    {
+      "a": "Palam Vihar",
+      "b": "Manesar",
+      "weight": 6.0,
+      "bidirectional": true
+    },
+    {
+      "a": "Badshahpur",
+      "b": "Manesar",
+      "weight": 5.5,
+      "bidirectional": true
+    }
+  ]
+}

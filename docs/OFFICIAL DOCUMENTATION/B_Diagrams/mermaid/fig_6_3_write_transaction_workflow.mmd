@@ -1,0 +1,22 @@
+sequenceDiagram
+  autonumber
+  participant H as API handler
+  participant D as _database_write wrapper
+  participant S as Store method (e.g. add_parcel)
+  participant DB as Neon PostgreSQL
+  H->>D: call store.add_parcel(draft)
+  D->>D: acquire process-wide RLock
+  D->>DB: psycopg.connect(DATABASE_URL, connect_timeout=15)
+  D->>DB: SELECT state FROM public.courier_app_state WHERE singleton = TRUE FOR UPDATE
+  DB-->>D: current state row (row is now locked)
+  D->>S: run method on the freshly loaded state
+  S->>S: validate, mutate in-memory state
+  S->>DB: UPDATE ... SET state = %s, version = version + 1, updated_at = NOW()
+  alt method raises an exception
+    S-->>D: ApiError
+    D->>DB: connection closes with rollback (no write)
+    D-->>H: error propagates to handler
+  else success
+    D->>DB: connection closes with commit
+    D-->>H: return value
+  end

@@ -1,0 +1,19 @@
+flowchart TD
+  S(["Start: merge_sort(items, key)"]) --> C["key_fn = key or identity<br/>work on list(items) copy"]
+  C --> Q{"len(items) <= 1 ?"}
+  Q -- "yes" --> R1["return copy of items"]
+  Q -- "no" --> M["mid = len(items) // 2"]
+  M --> L["left = _sort(items[:mid])"]
+  L --> RR["right = _sort(items[mid:])"]
+  RR --> G["merged = [ ]; i = 0; j = 0"]
+  G --> W{"i < len(left)<br/>and j < len(right) ?"}
+  W -- "yes" --> CMP["comparisons += 1"]
+  CMP --> K{"key(left[i]) <= key(right[j]) ?"}
+  K -- "yes" --> TL["append left[i]; i += 1"]
+  K -- "no" --> TR["append right[j]; j += 1"]
+  TL --> W
+  TR --> W
+  W -- "no" --> EX["append remaining left[i:] and right[j:]"]
+  EX --> R2["return merged"]
+  R1 --> E(["End"])
+  R2 --> E

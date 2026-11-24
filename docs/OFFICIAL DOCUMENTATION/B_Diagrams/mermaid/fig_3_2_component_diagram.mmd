@@ -1,0 +1,53 @@
+flowchart TB
+  classDef fe fill:#E8F1FB,stroke:#2B5C9E,color:#12304F
+  classDef be fill:#EAF6EC,stroke:#2E7D3E,color:#14391C
+  classDef sv fill:#FFF4DE,stroke:#B07A10,color:#4A3305
+  classDef al fill:#FBE9EA,stroke:#B03040,color:#4F1119
+  classDef ex fill:#EEE9F8,stroke:#5B3FA0,color:#271A4B
+  subgraph FE["Frontend - frontend/src"]
+    direction LR
+    APP["App.tsx<br/>hash router"]:::fe
+    PAGES["pages/*<br/>9 pages"]:::fe
+    STO["store.tsx<br/>global state"]:::fe
+    API["api.ts<br/>fetch wrapper"]:::fe
+    CMP["components/*"]:::fe
+    APP --> PAGES
+    PAGES --> STO
+    PAGES --> CMP
+    STO --> API
+  end
+  subgraph BE["API layer - backend/app"]
+    direction LR
+    MAIN["main.py<br/>create_app(), routes"]:::be
+    MOD["models.py"]:::be
+    ERR["errors.py"]:::be
+    CFG["config.py"]:::be
+    MAIN --> MOD
+    MAIN --> ERR
+    MAIN --> CFG
+  end
+  subgraph SV["Service layer - backend/app/services"]
+    direction LR
+    PIPE["pipeline.py"]:::sv
+    STORE["store.py"]:::sv
+    BM["benchmark.py"]:::sv
+    LRN["learning.py"]:::sv
+    OTH["datasets.py<br/>exports.py<br/>report.py"]:::sv
+    BM --> PIPE
+    PIPE --> STORE
+  end
+  subgraph AL["Algorithm layer - backend/app/algorithms"]
+    direction LR
+    SORT["sorting.py"]:::al
+    KNAP["knapsack.py"]:::al
+    GR["graph.py"]:::al
+    TSP["tsp.py"]:::al
+    TSP --> GR
+  end
+  PG[("PostgreSQL via psycopg<br/>or state.json")]:::ex
+  API -- "HTTP /api/*" --> MAIN
+  BE --> SV
+  PIPE --> AL
+  BM --> AL
+  LRN --> AL
+  STORE -- "SQL / file I/O" --> PG

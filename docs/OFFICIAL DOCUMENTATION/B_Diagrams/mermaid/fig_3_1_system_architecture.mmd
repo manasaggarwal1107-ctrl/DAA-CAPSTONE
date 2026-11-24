@@ -1,0 +1,47 @@
+flowchart TB
+  classDef client fill:#E8F1FB,stroke:#2B5C9E,color:#12304F
+  classDef api fill:#EAF6EC,stroke:#2E7D3E,color:#14391C
+  classDef svc fill:#FFF4DE,stroke:#B07A10,color:#4A3305
+  classDef algo fill:#FBE9EA,stroke:#B03040,color:#4F1119
+  classDef store fill:#EEE9F8,stroke:#5B3FA0,color:#271A4B
+  subgraph C["Client - Browser"]
+    UI["React 19 + TypeScript SPA<br/>frontend/src (pages, store.tsx, api.ts)"]:::client
+  end
+  subgraph S["Application server - Starlette ASGI (backend/app/main.py)"]
+    R["Route table /api/*<br/>request body validation (Pydantic)"]:::api
+    EH["Central error handlers<br/>(errors.py)"]:::api
+    SF["StaticFiles: frontend/dist"]:::api
+  end
+  subgraph V["Service layer - backend/app/services"]
+    PL["pipeline.py<br/>run_pipeline()"]:::svc
+    ST["store.py<br/>Store"]:::svc
+    OT["datasets / benchmark / exports / report / learning"]:::svc
+  end
+  subgraph A["Algorithm layer - backend/app/algorithms (pure Python)"]
+    A1["sorting.py<br/>merge_sort"]:::algo
+    A2["knapsack.py<br/>knapsack_01"]:::algo
+    A3["graph.py<br/>MinHeap, Graph, dijkstra"]:::algo
+    A4["tsp.py<br/>nearest_neighbour_route"]:::algo
+  end
+  subgraph P["Persistence layer"]
+    PG[("Neon PostgreSQL<br/>public.courier_app_state<br/>(when DATABASE_URL is set)")]:::store
+    JF[("backend/data/state.json<br/>(when DATABASE_URL is not set)")]:::store
+  end
+  UI -- "HTTP JSON requests" --> R
+  R -- "JSON responses / errors" --> UI
+  SF -- "HTML, JS, CSS" --> UI
+  R --> PL
+  R --> ST
+  R --> OT
+  R -. "exceptions" .-> EH
+  PL --> A1
+  PL --> A2
+  PL --> A3
+  PL --> A4
+  A4 --> A3
+  OT --> A1
+  OT --> A2
+  OT --> A3
+  OT --> A4
+  ST -- "psycopg 3" --> PG
+  ST -- "atomic file write" --> JF

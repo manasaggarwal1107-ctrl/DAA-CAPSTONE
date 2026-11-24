@@ -1,0 +1,16 @@
+flowchart TD
+  classDef a fill:#E8F1FB,stroke:#2B5C9E,color:#12304F
+  classDef b fill:#EAF6EC,stroke:#2E7D3E,color:#14391C
+  classDef c fill:#FFF4DE,stroke:#B07A10,color:#4A3305
+  S(["Start"]) --> A1["Open application<br/>GET /api/state, GET /api/result"]:::a
+  A1 --> A2["Add or import parcels<br/>POST /api/parcels, /api/parcels/import,<br/>/api/datasets/load"]:::a
+  A2 --> A3["Edit road network if needed<br/>POST/DELETE /api/graph/locations, /api/graph/roads"]:::a
+  A3 --> A4["Set capacity, depot, dispatch time<br/>PUT /api/settings"]:::a
+  A4 --> A5["Press Optimise<br/>POST /api/optimise"]:::a
+  A5 --> B1["run_pipeline():<br/>sort, knapsack, Dijkstra, Nearest Neighbour, ETA model"]:::b
+  B1 --> B2["Result stored as last_result"]:::b
+  B2 --> C1["View results<br/>Dashboard, Load planning, Route planner"]:::c
+  C1 --> C2{"Data or settings changed?"}
+  C2 -- "yes: result marked stale" --> A2
+  C2 -- "no" --> C3["Export CSV / PDF<br/>GET /api/export/{kind}"]:::c
+  C3 --> E(["End"])

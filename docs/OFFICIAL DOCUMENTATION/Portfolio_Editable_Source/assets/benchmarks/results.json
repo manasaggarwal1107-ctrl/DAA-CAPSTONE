@@ -1,0 +1,254 @@
+{
+  "generated_at": "2026-11-24 09:11:24",
+  "parameters": {
+    "sizes": [
+      10,
+      50,
+      100,
+      500,
+      1000,
+      5000
+    ],
+    "repeats": 5,
+    "seed": 42,
+    "dp_capacity_cap_kg": 600,
+    "capacity_rule": "25% of total parcel weight, capped at 600 kg",
+    "locations_rule": "min(max(8, n/10), 150)"
+  },
+  "environment": {
+    "python": "3.13.7",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "processor": "Intel64 Family 6 Model 154 Stepping 3, GenuineIntel"
+  },
+  "theory": {
+    "sorting": "Merge Sort: O(n log n)",
+    "knapsack": "0/1 Knapsack DP: O(n * W)",
+    "dijkstra": "Dijkstra (binary heap): O((V + E) log V)",
+    "routing": "Nearest Neighbour: O(k * (V + E) log V) for k stops"
+  },
+  "rows": [
+    {
+      "n": 10,
+      "locations": 8,
+      "roads": 13,
+      "capacity": 27,
+      "selected": 5,
+      "stops": 4,
+      "dp_cells": 280,
+      "sorting": {
+        "median_ms": 0.0105,
+        "min_ms": 0.0103,
+        "mean_ms": 0.0109,
+        "repeats": 5,
+        "peak_kb": 1.0
+      },
+      "knapsack": {
+        "median_ms": 0.016,
+        "min_ms": 0.014,
+        "mean_ms": 0.0183,
+        "repeats": 5,
+        "peak_kb": 2.7
+      },
+      "dijkstra": {
+        "median_ms": 0.0102,
+        "min_ms": 0.0092,
+        "mean_ms": 0.0158,
+        "repeats": 5,
+        "peak_kb": 1.7
+      },
+      "routing": {
+        "median_ms": 0.0616,
+        "min_ms": 0.0559,
+        "mean_ms": 0.0642,
+        "repeats": 5,
+        "peak_kb": 3.4
+      }
+    },
+    {
+      "n": 50,
+      "locations": 8,
+      "roads": 12,
+      "capacity": 178,
+      "selected": 19,
+      "stops": 7,
+      "dp_cells": 8950,
+      "sorting": {
+        "median_ms": 0.0765,
+        "min_ms": 0.0715,
+        "mean_ms": 0.076,
+        "repeats": 5,
+        "peak_kb": 2.4
+      },
+      "knapsack": {
+        "median_ms": 0.4131,
+        "min_ms": 0.3841,
+        "mean_ms": 0.4294,
+        "repeats": 5,
+        "peak_kb": 19.7
+      },
+      "dijkstra": {
+        "median_ms": 0.0103,
+        "min_ms": 0.0096,
+        "mean_ms": 0.0142,
+        "repeats": 5,
+        "peak_kb": 1.3
+      },
+      "routing": {
+        "median_ms": 0.086,
+        "min_ms": 0.0797,
+        "mean_ms": 0.0877,
+        "repeats": 5,
+        "peak_kb": 4.2
+      }
+    },
+    {
+      "n": 100,
+      "locations": 10,
+      "roads": 14,
+      "capacity": 368,
+      "selected": 42,
+      "stops": 9,
+      "dp_cells": 36900,
+      "sorting": {
+        "median_ms": 0.1839,
+        "min_ms": 0.168,
+        "mean_ms": 0.1951,
+        "repeats": 5,
+        "peak_kb": 3.6
+      },
+      "knapsack": {
+        "median_ms": 1.7442,
+        "min_ms": 1.6904,
+        "mean_ms": 1.8484,
+        "repeats": 5,
+        "peak_kb": 57.8
+      },
+      "dijkstra": {
+        "median_ms": 0.0116,
+        "min_ms": 0.0113,
+        "mean_ms": 0.0167,
+        "repeats": 5,
+        "peak_kb": 1.3
+      },
+      "routing": {
+        "median_ms": 0.1178,
+        "min_ms": 0.1141,
+        "mean_ms": 0.1264,
+        "repeats": 5,
+        "peak_kb": 4.4
+      }
+    },
+    {
+      "n": 500,
+      "locations": 50,
+      "roads": 77,
+      "capacity": 600,
+      "selected": 104,
+      "stops": 43,
+      "dp_cells": 300500,
+      "sorting": {
+        "median_ms": 1.2778,
+        "min_ms": 1.1186,
+        "mean_ms": 1.2929,
+        "repeats": 5,
+        "peak_kb": 13.4
+      },
+      "knapsack": {
+        "median_ms": 14.0488,
+        "min_ms": 13.9383,
+        "mean_ms": 14.1501,
+        "repeats": 5,
+        "peak_kb": 351.1
+      },
+      "dijkstra": {
+        "median_ms": 0.0833,
+        "min_ms": 0.0781,
+        "mean_ms": 0.0893,
+        "repeats": 5,
+        "peak_kb": 6.2
+      },
+      "routing": {
+        "median_ms": 3.309,
+        "min_ms": 3.1243,
+        "mean_ms": 3.3739,
+        "repeats": 5,
+        "peak_kb": 20.5
+      }
+    },
+    {
+      "n": 1000,
+      "locations": 100,
+      "roads": 163,
+      "capacity": 600,
+      "selected": 146,
+      "stops": 79,
+      "dp_cells": 601000,
+      "sorting": {
+        "median_ms": 2.6167,
+        "min_ms": 2.3719,
+        "mean_ms": 2.5921,
+        "repeats": 3,
+        "peak_kb": 25.5
+      },
+      "knapsack": {
+        "median_ms": 29.256,
+        "min_ms": 27.5351,
+        "mean_ms": 28.7493,
+        "repeats": 3,
+        "peak_kb": 679.0
+      },
+      "dijkstra": {
+        "median_ms": 0.179,
+        "min_ms": 0.1783,
+        "mean_ms": 0.1912,
+        "repeats": 3,
+        "peak_kb": 16.8
+      },
+      "routing": {
+        "median_ms": 14.6034,
+        "min_ms": 14.4182,
+        "mean_ms": 14.7349,
+        "repeats": 3,
+        "peak_kb": 51.0
+      }
+    },
+    {
+      "n": 5000,
+      "locations": 150,
+      "roads": 240,
+      "capacity": 600,
+      "selected": 281,
+      "stops": 120,
+      "dp_cells": 3005000,
+      "sorting": {
+        "median_ms": 16.0226,
+        "min_ms": 14.8825,
+        "mean_ms": 15.678,
+        "repeats": 3,
+        "peak_kb": 122.2
+      },
+      "knapsack": {
+        "median_ms": 138.9238,
+        "min_ms": 135.3236,
+        "mean_ms": 139.3941,
+        "repeats": 3,
+        "peak_kb": 3288.1
+      },
+      "dijkstra": {
+        "median_ms": 0.2521,
+        "min_ms": 0.2453,
+        "mean_ms": 0.2708,
+        "repeats": 3,
+        "peak_kb": 16.8
+      },
+      "routing": {
+        "median_ms": 32.5004,
+        "min_ms": 31.8975,
+        "mean_ms": 32.431,
+        "repeats": 3,
+        "peak_kb": 63.7
+      }
+    }
+  ],
+  "note": "All times are measured on this machine; theoretical complexities are given separately and are not measurements."
+}

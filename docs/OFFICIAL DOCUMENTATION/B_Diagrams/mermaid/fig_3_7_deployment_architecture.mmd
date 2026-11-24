@@ -1,0 +1,18 @@
+flowchart TB
+  classDef g fill:#EAF6EC,stroke:#2E7D3E,color:#14391C
+  classDef v fill:#E8F1FB,stroke:#2B5C9E,color:#12304F
+  classDef n fill:#EEE9F8,stroke:#5B3FA0,color:#271A4B
+  classDef u fill:#FFF4DE,stroke:#B07A10,color:#4A3305
+  USR["User browser"]:::u
+  GH["GitHub repository<br/>manasaggarwal1107-ctrl/DAA-CAPSTONE"]:::g
+  subgraph VER["Vercel (as configured in pyproject.toml)"]
+    EP["[tool.vercel]<br/>entrypoint = backend.app.main:app"]:::v
+    ENVV["Environment variable<br/>DATABASE_URL (secret)"]:::v
+    DIST["Prebuilt frontend/dist<br/>(committed to the repository)"]:::v
+  end
+  NEON[("Neon PostgreSQL")]:::n
+  GH -- "source code" --> VER
+  USR -- "HTTPS" --> EP
+  EP --- DIST
+  ENVV --> EP
+  EP -- "psycopg connection" --> NEON
