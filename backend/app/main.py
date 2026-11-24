@@ -53,7 +53,10 @@ def download(content: str | bytes, filename: str, media: str) -> Response:
 
 
 def create_app(data_dir: Optional[Path] = None, frontend_dist: Optional[Path] = None) -> Starlette:
-    store = Store((Path(data_dir) if data_dir else config.DATA_DIR) / "state.json")
+    store = Store(
+        (Path(data_dir) if data_dir else config.DATA_DIR) / "state.json",
+        database_url=config.DATABASE_URL if data_dir is None else None,
+    )
 
     def signature() -> str:
         blob = json.dumps([store.state["parcels"], store.state["graph"], store.state["settings"]], sort_keys=True)

@@ -7,6 +7,7 @@ from pathlib import Path
 BACKEND_DIR = Path(__file__).resolve().parents[1]
 PROJECT_DIR = BACKEND_DIR.parent
 DATA_DIR = Path(os.environ.get("COURIER_DATA_DIR", BACKEND_DIR / "data"))
+DATABASE_URL = os.environ.get("DATABASE_URL")
 FRONTEND_DIST = Path(os.environ.get("COURIER_FRONTEND_DIST", PROJECT_DIR / "frontend" / "dist"))
 SAMPLE_DIR = PROJECT_DIR / "sample_data"
 
