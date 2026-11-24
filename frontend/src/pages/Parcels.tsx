@@ -1,6 +1,6 @@
 import { useMemo, useRef, useState, type FormEvent } from 'react';
 import { api, errorMessage, fieldErrors } from '../api';
-import { Badge, Button, Card, Empty, Field, Modal, Notice, PageHeader, PriorityBadge, StatusBadge } from '../components/ui';
+import { Button, Card, Empty, Field, Modal, Notice, PageHeader, PriorityBadge, StatusBadge } from '../components/ui';
 import { Icon } from '../icons';
 import { fmt, fmtDate, PRIORITY_LABEL } from '../lib';
 import { useApp } from '../store';

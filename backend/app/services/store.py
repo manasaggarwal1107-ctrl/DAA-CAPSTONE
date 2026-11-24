@@ -84,7 +84,7 @@ class Store:
     def state(self, value: dict[str, Any]) -> None:
         self._state = value
 
-    # ---- persistence ----------------------------------------------------
+
     def _default_state(self) -> dict:
         graph = datasets.sample_graph_data()
         dests = [l["name"] for l in graph["locations"] if l["name"] != "Depot"]
@@ -152,7 +152,7 @@ class Store:
             self.state = self._default_state()
             self.save()
 
-    # ---- parcels --------------------------------------------------------
+
     def parcels(self) -> list[dict]:
         with self.lock:
             return copy.deepcopy(self.state["parcels"])
@@ -213,7 +213,7 @@ class Store:
             self.state["parcels"] = parcels
             self.save()
 
-    # ---- graph ----------------------------------------------------------
+
     def graph_data(self) -> dict:
         with self.lock:
             return copy.deepcopy(self.state["graph"])
@@ -265,7 +265,7 @@ class Store:
             self.state["graph"]["roads"] = after
             self.save()
 
-    # ---- settings / cached results -------------------------------------
+
     def settings(self) -> dict:
         with self.lock:
             return dict(self.state["settings"])

@@ -32,7 +32,6 @@ def _merge(left: list, right: list, key: KeyFn, stats: Optional[dict]) -> list:
         else:
             merged.append(right[j])
             j += 1
-    # One side is exhausted; the remainder is already ordered.
     merged.extend(left[i:])
     merged.extend(right[j:])
     return merged

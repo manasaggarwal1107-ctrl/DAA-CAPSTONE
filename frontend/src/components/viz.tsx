@@ -1,6 +1,5 @@
 // Shared algorithm visualisations: merge-sort step player and the knapsack DP table.
 import { useEffect, useState } from 'react';
-import { Icon } from '../icons';
 import type { MergeEvent } from '../types';
 import { Button } from './ui';
 
@@ -24,10 +23,6 @@ export function StepControls({ step, max, onChange, label = 'Step' }: { step: nu
     </div>
   );
 }
-
-const chip = (v: string | number, extra = '') => (
-  <span key={`${v}-${extra}`} className={`rounded-md border px-1.5 py-0.5 text-[12px] tabular-nums ${extra || 'border-line bg-ink-800 text-fg2'}`}>{v}</span>
-);
 
 /** Walks through the recorded split/merge events of a Merge Sort run. */
 export function MergeTrace({ events, input, describe }: { events: MergeEvent[]; input: (string | number)[]; describe?: (id: string | number) => string }) {

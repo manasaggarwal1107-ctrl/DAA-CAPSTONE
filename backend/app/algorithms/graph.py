@@ -30,7 +30,7 @@ class MinHeap:
         a = self._a
         a.append((priority, self._seq, item))
         i = len(a) - 1
-        while i > 0:                                   # sift up
+        while i > 0:
             parent = (i - 1) // 2
             if a[i][:2] < a[parent][:2]:
                 a[i], a[parent] = a[parent], a[i]
@@ -47,7 +47,7 @@ class MinHeap:
         if a:
             a[0] = last
             i, n = 0, len(a)
-            while True:                                # sift down
+            while True:
                 left, right, smallest = 2 * i + 1, 2 * i + 2, i
                 if left < n and a[left][:2] < a[smallest][:2]:
                     smallest = left
